@@ -14,6 +14,9 @@ this.addEventListener('install', (event) => {
         'assets/icon-256x256.png',
         'assets/icon-384x384.png',
         'assets/icon-512x512.png',
+        'assets/APPCONNECT_32x32.png',
+        'assets/apple-touch-icon.png',
+        'assets/logoApps.svg',
         '/icons-1.7.2/font/bootstrap-icons.css'
         
       ]);
@@ -33,9 +36,9 @@ this.addEventListener('fetch', (event) => {
     })
     );
 });
-this.addEventListener('activate', (event) => {
-  console.log(' Activation avec succès des service worker');
-});
+// this.addEventListener('activate', (event) => {
+//   console.log(' Activation avec succès des service worker');
+// });
 
 // self.addEventListener('fetch', function (event)  {
 //   console.log('Fetching ...' + event.request.url);

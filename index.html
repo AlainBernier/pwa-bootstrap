@@ -15,17 +15,17 @@
   <!-- Bootstrap Icons CSS -->
   <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">-->
   <link rel="stylesheet" href="icons-1.7.2/font/bootstrap-icons.css" />
-  
+
   <link rel="icon" href="favicon.ico">
   <!-- <script defer src="index.js"></script> -->
   <link rel="manifest" href="manifest.json">
 
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="application-name" content="APP CONNECT">
-<meta name="apple-mobile-web-app-title" content="APP CONNECT">
-<meta name="msapplication-starturl" content="/">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="APP CONNECT">
+  <meta name="apple-mobile-web-app-title" content="APP CONNECT">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>APP CONNECT</title>
 </head>
 
@@ -39,7 +39,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">APP CONNECT</a>
+      <a class="navbar-brand" href="#">APP CONNECT</a> 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -93,10 +93,24 @@
       </div>
     </div>
   </nav>
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="message">
+    <div class="toast-header">
+      <img src="assets/APPCONNECT_32x32.png" class="rounded me-2" alt="icon">
+      <strong class="me-auto">APP CONNECT</strong>
+      <small></small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Pour avoir l'application toujours à porté de la main, juste à l'intaller sur l'écran d'accueil</div>
+    <div class="toast-body d-grid gap-2 col-6 mx-auto">
+      <button type="button" class="btn btn-primary btn-sm" id="appButton">Installer</button>
+      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Peut-être plus tard</button>
+    </div>
+  </div>
   <main>
-    <div class="container-expand-md bg-dark text-white">
-      <h1 class="text-center pt-5">Créez un sentiment d'appartenance!</h1>
-      <p class="text-center pb-5">
+    <div class="container-expand-md bg-primary text-white">
+      <h1 class="text-center pt-4">Créez un sentiment d'appartenance!</h1>
+      <p class="text-center pb-4">
         Une application mobile pour mieux communiquer avec vos employés.
       </p>
     </div>
