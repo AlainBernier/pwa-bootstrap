@@ -1,7 +1,7 @@
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open('v1').then((cache) => {
-      return cache.addAll([
+this.addEventListener('install', (event) => {
+    event.waitUntil(
+      caches.open('v1').then((cache) => {
+        return cache.addAll([
         '/index.html',
         '/index.js',
         '/bootstrap-5.1.3-dist/css/bootstrap.min.css',
@@ -14,26 +14,27 @@ self.addEventListener('install', (event) => {
         'assets/icon-256x256.png',
         'assets/icon-384x384.png',
         'assets/icon-512x512.png',
-        '/icons-1.7.2/font/bootstrap-icons.css',
+        '/icons-1.7.2/font/bootstrap-icons.css'
+        
       ]);
     })
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((resp) => {
-      return (
-        resp ||
-        fetch(event.request).then(async (response) => {
+this.addEventListener('fetch', (event) => {
+    event.respondWith(
+      caches.match(event.request).then((resp) => {
+        return resp || fetch(event.request).then( async (response) => {
           return caches.open('v1').then((cache) => {
             cache.put(event.request, response.clone());
             return response;
-          });
-        })
-      );
+        });
+        });
     })
-  );
+    );
+});
+this.addEventListener('activate', (event) => {
+  console.log(' Activation avec succès des service worker');
 });
 
 // self.addEventListener('fetch', function (event)  {
