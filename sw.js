@@ -38,20 +38,4 @@ this.addEventListener("fetch", (event) => {
     })
   );
 });
-// this.addEventListener('activate', (event) => {
-//   console.log(' Activation avec succès des service worker');
-// });
 
-// self.addEventListener('fetch', function (event)  {
-//   console.log('Fetching ...' + event.request.url);
-//   event.respondWith(
-//     caches.match(event.request).then((response) => {
-//       if (response !== undefined) {
-//         return response;
-//       } else {
-//         console.log('Fetching from fetch ...' + event.request.url);
-//         return fetch(event.request);
-//       }
-//     })
-//   );
-// });
