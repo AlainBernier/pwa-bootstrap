@@ -1,10 +1,10 @@
 if ('serviceWorker' in navigator) {
    
   navigator.serviceWorker.register('sw.js')
-    .then((reg) => {
+    .then(function(reg)  {
       // registration worked
       console.log('Enregistrement réalisé avec succès. Scope is ' + reg.scope);
-    }).catch((error) => {
+    }).catch(function(error)  {
       // registration failed
       console.log('Ah Non quelque chose cloche ' + error);
     });
