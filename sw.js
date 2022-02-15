@@ -1,6 +1,6 @@
 this.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open("v1").then((cache) => {
+    caches.open('v1').then((cache) => {
       return cache.addAll([
         "index.html",
         "index.js",
@@ -17,25 +17,49 @@ this.addEventListener("install", (event) => {
         "assets/APPCONNECT_32x32.png",
         "assets/apple-touch-icon.png",
         "assets/logoApps.svg",
+        "page-hors-ligne.html",
         "icons-1.7.2/font/bootstrap-icons.css",
       ]);
     })
   );
 });
 
-this.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((resp) => {
-      return (
-        resp ||
-        fetch(event.request).then(async (response) => {
-          return caches.open("v1").then((cache) => {
-            cache.put(event.request, response.clone());
-            return response;
-          });
-        })
-      );
-    })
-  );
+this.addEventListener('fetch', function(event) {
+  console.log("Fetching ..." + event.request.url);
+  event.respondWith(cacheOrNetwork(event.request).catch(() => 
+  fallbackVersPageHorsLigne()));
 });
+
+
+function cacheOrNetwork(request) {
+return fromCache(request).catch(() => fetch(request));
+};
+
+function fromCache(request) {
+return caches.open('v1').then(function (cache) {
+  return cache.match(request).then(function (matching) {
+    return matching || Promise.reject('no-match');
+  });
+});
+}
+
+function fallbackVersPageHorsLigne() {
+  return caches.match("page-hors-ligne.html");
+ }
+
+// this.addEventListener("fetch", (event) => {
+//   event.respondWith(
+//     caches.match(event.request).then((resp) => {
+//       return (
+//         resp ||
+//         fetch(event.request).then(async (response) => {
+//           return caches.open("v1").then((cache) => {
+//             cache.put(event.request, response.clone());
+//             return response;
+//           });
+//         })
+//       );
+//     })
+//   );
+// });
 
