@@ -38,38 +38,3 @@ function installationApp() {
   const toast = new bootstrap.Toast(popup, { delay: 10000 });
   toast.show();
 }
-
-// function meNotifier() {
-//   Notification.requestPermission().then(function (result) {
-//       console.log("permission donnée");
-     
-//       if ('serviceWorker' in navigator && 'SyncManager' in window) {
-//         navigator.serviceWorker.ready.then(function(reg) {
-//             return reg.sync.register('mon-tag');
-//         });
-     
-//       if (Notification.permission === 'granted') {
-//         var options = {
-//             body: 'La connexion est rétablie, vous pouvez naviguer le site entier',
-//             requireInteraction: true
-//         };
-
-//         const notification = new Notification('Bonne nouvelle', options);
-//     } else {
-//         console.log("aucune notification car non permis");
-//     }
-//   }});
-// }
-
-//   function envoyerNotificationThreadUtilisateur() {
-//     if (Notification.permission === 'granted') {
-//         var options = {
-//             body: 'La connexion est rétablie, vous pouvez naviguer le site entier',
-//             requireInteraction: true
-//         };
-
-//         const notification = new Notification('Bonne nouvelle', options);
-//     } else {
-//         console.log("aucune notification car non permis");
-//     }
-// }

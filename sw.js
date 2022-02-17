@@ -1,6 +1,6 @@
 this.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open('v1').then((cache) => {
+    caches.open("v1").then((cache) => {
       return cache.addAll([
         "index.html",
         "index.js",
@@ -25,55 +25,51 @@ this.addEventListener("install", (event) => {
   );
 });
 
-this.addEventListener('fetch', function(event) {
+this.addEventListener("fetch", function (event) {
   console.log("Fetching ..." + event.request.url);
-  event.respondWith(cacheOrNetwork(event.request).catch(() => 
-  fallbackVersPageHorsLigne()));
+  event.respondWith(
+    cacheOrNetwork(event.request).catch(() => fallbackVersPageHorsLigne())
+  );
 });
-
 
 function cacheOrNetwork(request) {
-return fromCache(request).catch(() => fetch(request));
-};
+  return fromCache(request).catch(() => fetch(request));
+}
 
 function fromCache(request) {
-return caches.open('v1').then(function (cache) {
-  return cache.match(request).then(function (matching) {
-    return matching || Promise.reject('no-match');
+  return caches.open("v1").then(function (cache) {
+    return cache.match(request).then(function (matching) {
+      return matching || Promise.reject("no-match");
+    });
   });
-});
 }
 
 function fallbackVersPageHorsLigne() {
   return caches.match("page-hors-ligne.html");
- } 
+}
 
- // Surveille événement de retour de connexion
- this.addEventListener('sync', function (event) {
-   console.log("évènement reçu : " + event);
-   if (event.tag == 'mon-tag') {
-        console.log("Connexion rétablie notification peut-être envoyé si autorisée");
-        event.waitUntil(envoyerNotification());
-   }
- });
+// Surveille événement de retour de connexion
+this.addEventListener("sync", function (event) {
+  console.log("évènement reçu : " + event);
+  if (event.tag == "mon-tag") {
+    console.log(
+      "Connexion rétablie notification peut-être envoyé si autorisée"
+    );
+    event.waitUntil(envoyerNotification());
+  }
+});
 
- // Fonction pour envoyer notification quand connexion est rétablie
- function envoyerNotification() {
-   console.log("Notification envoyée");
-   if (Notification.permission === "granted") {
-     var options = {
-       body: 'Votre page est maintenant disponible !',
-       requireInteraction: true
-     };
+// Fonction pour envoyer notification quand connexion est rétablie
+function envoyerNotification() {
+  console.log("Notification envoyée");
+  if (Notification.permission === "granted") {
+    var options = {
+      body: "Votre page est maintenant disponible !",
+      requireInteraction: true,
+    };
 
-     self.registration.showNotification('Connexion rétablie', options);
-
-   } else
-   {
-     console.log("les notificaiotns ne sont pas permises");
-   }
-
- }
-
-
-
+    self.registration.showNotification("Connexion rétablie", options);
+  } else {
+    console.log("les notificaiotns ne sont pas permises");
+  }
+}
